@@ -1,0 +1,28 @@
+[package]
+name = "recap-studio"
+description = "Recap Studio: dựng chương manga từ dữ liệu bộ (định dạng cũ, chỉ đọc) bằng lõi FilmCraft"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "recap-studio"
+path = "src/main.rs"
+
+[dependencies]
+filmcraft-engine = { workspace = true }
+# T622: bộ dựng GPU cho xuat-doan (cùng cách apps/filmcraft đăng ký)
+filmcraft-export = { workspace = true }
+filmcraft-gpu = { workspace = true }
+filmcraft-project = { workspace = true }
+filmcraft-render = { workspace = true }
+filmcraft-time = { workspace = true }
+# chỉ để bật backend GPU (filmcraft-gpu không tự chọn); cùng bản 30 đã có trong Cargo.lock
+wgpu = { version = "30", default-features = false, features = ["wgsl", "metal", "vulkan", "dx12"] }
+serde_json = { workspace = true }
+# cùng bản 0.25 đã có trong Cargo.lock (engine/codecs); chỉ để vẽ nền mờ nhỏ vào bộ nhớ đệm
+image = { version = "0.25", default-features = false, features = ["jpeg", "png"] }
+serde = { workspace = true }

@@ -1,0 +1,21 @@
+[package]
+name = "recap-gui"
+description = "Recap Studio: màn Thư viện bộ + Bảng điều khiển bộ (đọc file trạng thái của dịch vụ nền)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "recap-gui"
+path = "src/main.rs"
+
+[dependencies]
+egui = { workspace = true }
+eframe = { workspace = true, features = ["default_fonts", "wgpu", "accesskit"] }
+serde_json = { workspace = true }
+chrono = { workspace = true, features = ["clock"] }
+# cùng bản 0.25 đã có trong Cargo.lock (recap-studio); chỉ để giải mã ảnh bìa nhỏ + lưu ảnh chụp
+image = { version = "0.25", default-features = false, features = ["jpeg", "png"] }
